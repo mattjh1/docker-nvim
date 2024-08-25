@@ -28,14 +28,19 @@ RUN apt update && apt install -y \
     npm \
     python3-pip \
     python3-venv \
-    git
+    git \
+		xclip \
+		xsel \
+		fd-find
 
 # Create and activate a virtual environment for Python
 RUN python3 -m venv /usr/local/venv && \
-    /usr/local/venv/bin/pip install pynvim
+    /usr/local/venv/bin/pip install pynvim ruff
 
 # Install Node.js LSP servers and Tree-sitter CLI globally
-RUN npm install -g typescript-language-server vscode-langservers-extracted tree-sitter-cli
+RUN npm install -g typescript-language-server vscode-langservers-extracted tree-sitter-cli \
+    @fsouza/prettierd eslint_d pyright emmet-ls @tailwindcss/language-server \
+		@johnnymorganz/stylua-bin emmet-ls pyright
 
 # Set the virtual environment's Python as the default
 ENV PATH="/usr/local/venv/bin:$PATH"
@@ -47,9 +52,10 @@ COPY --from=builder /usr/local /usr/local/
 COPY . /root/.config/nvim
 
 # Install Neovim plugins and Mason dependencies during build
-RUN nvim --headless +':Lazy! sync' +qa
-RUN nvim --headless +':MasonInstall!' +qa
-RUN nvim --headless +':TSUpdateSync!' +qa
+RUN nvim --headless +':Lazy! sync' +qall
+# RUN nvim --headless +':MasonInstall!' +qa
+RUN nvim --headless +':TSUpdateSync all' +qall
+
 # Mount your Neovim configuration (ensure this directory exists on the host)
 VOLUME ["/root/.config/nvim"]
 

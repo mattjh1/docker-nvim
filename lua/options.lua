@@ -1,4 +1,4 @@
-vim.opt.clipboard = "unnamed"
+vim.opt.clipboard = "unnamedplus"
 vim.opt.cul = false
 vim.opt.relativenumber = true
 vim.opt.smartindent = true

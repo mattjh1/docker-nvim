@@ -20,7 +20,6 @@ require("mason-lspconfig").setup({
 		"lua_ls",
 		"jsonls",
 		"emmet_ls",
-		"pyright",
 	},
 	-- auto-install configured servers (with lspconfig)
 	automatic_installation = true,
@@ -31,8 +30,8 @@ require("mason-tool-installer").setup({
 		"prettierd",
 		"eslint_d",
 		"stylua",
+		"pyright",
 		"jq",
-		"black",
 		"isort",
 	},
 })

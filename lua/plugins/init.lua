@@ -15,8 +15,10 @@ return require("lazy").setup({
 	defaults = { lazy = true },
 	"rafamadriz/friendly-snippets",
 	"saadparwaiz1/cmp_luasnip",
+
 	"hrsh7th/cmp-nvim-lua",
 	"hrsh7th/cmp-nvim-lsp",
+
 	"hrsh7th/cmp-path",
 	"ojroques/nvim-bufdel",
 	"ahmedkhalf/project.nvim",
@@ -66,16 +68,16 @@ return require("lazy").setup({
 			require("plugins.treesitter")
 		end,
 	},
-	{
-		"williamboman/mason.nvim",
-		dependencies = {
-			"williamboman/mason-lspconfig.nvim",
-			"WhoIsSethDaniel/mason-tool-installer.nvim",
-		},
-		config = function()
-			require("plugins.mason")
-		end,
-	},
+	-- {
+	-- 	"williamboman/mason.nvim",
+	-- 	dependencies = {
+	-- 		"williamboman/mason-lspconfig.nvim",
+	-- 		"WhoIsSethDaniel/mason-tool-installer.nvim",
+	-- 	},
+	-- 	config = function()
+	-- 		require("plugins.mason")
+	-- 	end,
+	-- },
 	{
 		"neovim/nvim-lspconfig",
 		config = function()
@@ -179,7 +181,7 @@ return require("lazy").setup({
 		"nvimtools/none-ls.nvim",
 		dependencies = {
 			"nvimtools/none-ls-extras.nvim",
-			"jay-babu/mason-null-ls.nvim",
+			-- "jay-babu/mason-null-ls.nvim",
 		},
 		config = function()
 			require("plugins.none-ls")
