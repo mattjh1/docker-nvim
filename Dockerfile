@@ -53,7 +53,7 @@ COPY . /root/.config/nvim
 
 # Install Neovim plugins and Mason dependencies during build
 RUN nvim --headless +':Lazy! sync' +qall
-# RUN nvim --headless +':MasonInstall!' +qa
+RUN nvim --headless +':MasonToolsInstallSync all' +qall
 RUN nvim --headless +':TSUpdateSync all' +qall
 
 # Mount your Neovim configuration (ensure this directory exists on the host)

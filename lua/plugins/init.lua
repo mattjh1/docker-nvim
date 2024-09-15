@@ -12,7 +12,46 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 return require("lazy").setup({
-	defaults = { lazy = true },
+	performance = {
+		rtp = {
+			reset = false,
+			disabled_plugins = {
+				"gzip",
+				"matchit",
+				"matchparen",
+				"netrwPlugin",
+				"tarPlugin",
+				"tohtml",
+				"tutor",
+				"zipPlugin",
+			},
+		},
+	},
+	defaults = { lazy = false },
+	{
+		"ThePrimeagen/harpoon",
+		branch = "harpoon2",
+		dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
+		config = function()
+			require("plugins.harpoon")
+		end,
+	},
+	{
+		"kdheepak/lazygit.nvim",
+		cmd = {
+			"LazyGit",
+			"LazyGitConfig",
+			"LazyGitCurrentFile",
+			"LazyGitFilter",
+			"LazyGitFilterCurrentFile",
+		},
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
+		keys = {
+			{ "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
+		},
+	},
 	"rafamadriz/friendly-snippets",
 	"saadparwaiz1/cmp_luasnip",
 
@@ -68,16 +107,16 @@ return require("lazy").setup({
 			require("plugins.treesitter")
 		end,
 	},
-	-- {
-	-- 	"williamboman/mason.nvim",
-	-- 	dependencies = {
-	-- 		"williamboman/mason-lspconfig.nvim",
-	-- 		"WhoIsSethDaniel/mason-tool-installer.nvim",
-	-- 	},
-	-- 	config = function()
-	-- 		require("plugins.mason")
-	-- 	end,
-	-- },
+	{
+		"williamboman/mason.nvim",
+		dependencies = {
+			"williamboman/mason-lspconfig.nvim",
+			"WhoIsSethDaniel/mason-tool-installer.nvim",
+		},
+		config = function()
+			require("plugins.mason")
+		end,
+	},
 	{
 		"neovim/nvim-lspconfig",
 		config = function()

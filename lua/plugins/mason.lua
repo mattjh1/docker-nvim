@@ -28,10 +28,20 @@ require("mason-lspconfig").setup({
 require("mason-tool-installer").setup({
 	ensure_installed = {
 		"prettierd",
-		"eslint_d",
 		"stylua",
+		"isort",
+		"black",
+		"pylint",
+		"eslint_d",
+		"gopls",
+		"tsserver",
+		"html",
+		"cssls",
+		"lua_ls",
+		"jsonls",
+		"emmet_ls",
 		"pyright",
 		"jq",
-		"isort",
+		"yq",
 	},
 })
