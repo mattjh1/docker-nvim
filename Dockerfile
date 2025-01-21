@@ -39,7 +39,7 @@ RUN python3 -m venv /usr/local/venv && \
 
 # Install Node.js LSP servers and Tree-sitter CLI globally
 RUN npm install -g typescript-language-server typescript tree-sitter-cli \
-    prettier eslint_d pyright emmet-ls @tailwindcss/language-server \
+    prettier prettierd eslint_d eslint pyright emmet-ls @tailwindcss/language-server \
 		@johnnymorganz/stylua-bin pyright
 
 # Set the virtual environment's Python as the default
@@ -52,8 +52,8 @@ COPY --from=builder /usr/local /usr/local/
 COPY . /root/.config/nvim
 
 # Install Neovim plugins during build
-RUN nvim --headless +':Lazy! sync' +qall
-RUN nvim --headless +':TSUpdateSync all' +qall
+RUN nvim --headless +':Lazy! sync' +qall && \
+    nvim --headless +':TSUpdateSync all' +qall
 
 # Mount your Neovim configuration (ensure this directory exists on the host)
 VOLUME ["/root/.config/nvim"]
