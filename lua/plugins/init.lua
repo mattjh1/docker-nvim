@@ -108,16 +108,6 @@ return require("lazy").setup({
 		end,
 	},
 	{
-		"williamboman/mason.nvim",
-		dependencies = {
-			"williamboman/mason-lspconfig.nvim",
-			"WhoIsSethDaniel/mason-tool-installer.nvim",
-		},
-		config = function()
-			require("plugins.mason")
-		end,
-	},
-	{
 		"neovim/nvim-lspconfig",
 		config = function()
 			require("plugins.lspconfig")
