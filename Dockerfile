@@ -39,7 +39,7 @@ RUN python3 -m venv /usr/local/venv && \
 
 # Install Node.js LSP servers and Tree-sitter CLI globally
 RUN npm install -g typescript-language-server typescript tree-sitter-cli \
-    prettier prettierd eslint_d eslint pyright emmet-ls \
+    prettier @fsouza/prettierd eslint_d eslint pyright emmet-ls \
     @tailwindcss/language-server @johnnymorganz/stylua-bin
 
 # Set the virtual environment's Python as the default
