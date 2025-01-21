@@ -38,7 +38,7 @@ RUN python3 -m venv /usr/local/venv && \
     /usr/local/venv/bin/pip install pynvim ruff
 
 # Install Node.js LSP servers and Tree-sitter CLI globally
-RUN npm install -g typescript-language-server vscode-langservers-extracted tree-sitter-cli \
+RUN npm install -g typescript-language-server typescript tree-sitter-cli \
     prettier eslint_d pyright emmet-ls @tailwindcss/language-server \
 		@johnnymorganz/stylua-bin pyright
 
